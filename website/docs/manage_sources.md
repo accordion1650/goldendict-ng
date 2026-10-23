@@ -77,7 +77,14 @@ In the "Icon" column you can set custom icon for every server. If you add icon f
 
 Here you can add external applications. To add such an application, you should set the command line for its launch, name for the dictionary list and application type.
 
-The `%GDWORD%` in command line will be replaced by word from search line.
+The placeholders let a program distinguish a single lookup from the text in the search box:
+
+| Placeholder | Replaced with |
+|-------------|---------------|
+| `%GDWORD%` | The current lookup word. |
+| `%GDSEARCH%` | The complete text in the search box. |
+
+Use `%GDWORD%` for word lookups and `%GDSEARCH%` for sentence tools such as tokenizers or translators. If neither placeholder appears in the command, GoldenDict-ng sends the lookup word to the program through standard input.
 
 
 | Program type | Purpose                                                                               |
@@ -93,7 +100,7 @@ In the "Icon" column, you can set a custom icon for every application. If you ad
 
 !!!note 
 
-    The word will be written to `stdin` in UTF-8 if the command line doesn't contain `%GDWORD%`.
+    The word will be written to `stdin` in UTF-8 if the command line contains neither `%GDWORD%` nor `%GDSEARCH%`.
 
     In rare situations on Windows, some programs may not read `stdin` as UTF-8. In this case, you need to do some adjustments.
     
