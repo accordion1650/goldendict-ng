@@ -44,13 +44,25 @@ and save the script in the `E:\test.py` for example.
 
 ## Connect language-learning tools
 
-The [`gd-tools` project](https://github.com/accordion1650/gd-tools) contains command-line tools that GoldenDict-ng can run as program dictionaries. Install the tools and their dependencies first, then add each command under **Edit → Dictionaries → Programs**. Select **HTML** when the program returns HTML; its output must be written to standard output.
+The [`gd-tools` project](https://github.com/accordion1650/gd-tools) contains command-line tools that GoldenDict-ng can run as program dictionaries. Install the tools and their dependencies first, then add each command under **Edit → Dictionaries → Programs**. Set the program type to **HTML**; the tool's HTML output must be written to standard output.
 
-| Use | Command line | Program type |
-|-----|--------------|--------------|
-| Make Japanese words in a sentence clickable with MeCab | `gd-mecab --word %GDWORD% --sentence %GDSEARCH%` | HTML |
-| Segment a Mandarin sentence | `gd-mandarin --word %GDWORD% --sentence %GDSEARCH%` | HTML |
-| Translate the current sentence with Argos Translate | `gd-translate --sentence %GDSEARCH%` | HTML |
+For Japanese sentence segmentation with MeCab, use:
+
+```text
+gd-mecab --word %GDWORD% --sentence %GDSEARCH%
+```
+
+For Mandarin sentence segmentation, use:
+
+```text
+gd-mandarin --word %GDWORD% --sentence %GDSEARCH%
+```
+
+To translate a sentence with Argos Translate, use:
+
+```text
+gd-translate --sentence %GDSEARCH%
+```
 
 The MeCab tools need their language dictionaries installed. The Mandarin dictionary is an optional download described in the [`gd-tools` README](https://github.com/accordion1650/gd-tools#gd-mandarin); without it, `gd-mandarin` displays setup guidance instead of parsing text. `gd-translate` also needs Argos Translate and a language package, as described in the [translation section](https://github.com/accordion1650/gd-tools#gd-translate).
 
